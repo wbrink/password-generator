@@ -1,108 +1,44 @@
+// getting document form data
 var passwordLength = document.getElementById("length");
-
 var specialCharsCheckBox = document.getElementById("specialCharacters");
 var numbersCheckBox = document.getElementById("numbers");
 var lowerCaseCheckBox = document.getElementById("lowerCase");
 var upperCaseCheckBox = document.getElementById("upperCase");
 var generateButton = document.getElementById("submit");
 
-var passwordLength = 20;
+console.log("Password Length: "+ passwordLength.value);
+console.log("Special: " + specialCharsCheckBox.checked);
+console.log("Numbers: " + numbersCheckBox.checked);
+console.log("Lowercase: " + lowerCaseCheckBox.checked);
+console.log("Uppercase: " + upperCaseCheckBox.checked);
 
-var specialChars = [
-  " ",
-  "!",
-  '"',
-  "#",
-  "$",
-  "%",
-  "&",
-  "'",
-  "(",
-  ")",
-  "*",
-  "+",
-  ",",
-  "-",
-  ".",
-  "/",
-  ":",
-  ";",
-  "<",
-  "=",
-  ">",
-  "?",
-  "@",
-  "[",
-  "\\",
-  "]",
-  "^",
-  "_",
-  "`",
-  "{",
-  "|",
-  "}",
-  "~"
-]; // 33 length
+// character arrays to choose from
+var specialChars = [" ","!",'"',"#","$","%","&","'","(",")","*","+",",","-",".",
+                    "/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{",
+                    "|","}","~"]; // 33 length
+
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]; // length = 10
-var lowerCase = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z"
-]; // length = 26
-var upperCase = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z"
-]; // length = 26
+
+var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
+                 "n","o","p","q","r","s","t","u","v","w","x","y","z"]; // length = 26
+
+var upperCase = ["A", "B","C","D","E","F","G","H","I","J","K","L","M",
+                 "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]; // length = 26
+
+generateButton.addEventListener("click", generatePassword); // event parameter is passed to the callback function
+
+function generatePassword(e) {
+  e.preventDefault(); // don't want the form to submit, want form data to stay the same after click
+  console.log("Password Length: "+ passwordLength.value);
+  console.log("Special: " + specialCharsCheckBox.checked);
+  console.log("Numbers: " + numbersCheckBox.checked);
+  console.log("Lowercase: " + lowerCaseCheckBox.checked);
+  console.log("Uppercase: " + upperCaseCheckBox.checked);
+
+}
 
 //check box will tell what will be in there
-var usedCharacterArrays = [upperCase, lowerCase, numbers, specialChars];
+//var usedCharacterArrays = [upperCase, lowerCase, numbers, specialChars];
 
 // // this array will tell me what kind of character will be grabbed
 // var array = new Uint8Array(passwordLength);
