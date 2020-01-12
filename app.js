@@ -1,21 +1,16 @@
-// getting document form data
+// getting document elements
 var passwordLength = document.getElementById("length");
 var specialCharsCheckBox = document.getElementById("specialCharacters");
 var numbersCheckBox = document.getElementById("numbers");
 var lowerCaseCheckBox = document.getElementById("lowerCase");
 var upperCaseCheckBox = document.getElementById("upperCase");
-var generateButton = document.getElementById("submit");
-
-console.log("Password Length: "+ passwordLength.value);
-console.log("Special: " + specialCharsCheckBox.checked);
-console.log("Numbers: " + numbersCheckBox.checked);
-console.log("Lowercase: " + lowerCaseCheckBox.checked);
-console.log("Uppercase: " + upperCaseCheckBox.checked);
+var generateButton = document.getElementById("submit"); // submit button
+var message = document.getElementById("message"); // message area
+var passwordGenerator = document.getElementById("password-generator");
 
 // character arrays to choose from
-var specialChars = [" ","!",'"',"#","$","%","&","'","(",")","*","+",",","-",".",
-                    "/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{",
-                    "|","}","~"]; // 33 length
+var specialChars = [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?",
+                    "@","[","\\","]","^","_","`","{","|","}","~"]; // 33 length
 
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]; // length = 10
 
@@ -27,26 +22,68 @@ var upperCase = ["A", "B","C","D","E","F","G","H","I","J","K","L","M",
 
 generateButton.addEventListener("click", generatePassword); // event parameter is passed to the callback function
 
+var password = [];
 function generatePassword(e) {
   e.preventDefault(); // don't want the form to submit, want form data to stay the same after click
-  console.log("Password Length: "+ passwordLength.value);
-  console.log("Special: " + specialCharsCheckBox.checked);
-  console.log("Numbers: " + numbersCheckBox.checked);
-  console.log("Lowercase: " + lowerCaseCheckBox.checked);
-  console.log("Uppercase: " + upperCaseCheckBox.checked);
+  
+  var charTypes = [];
 
-}
+  // if no character types are checked notify and return
+  if (!specialCharsCheckBox.checked && 
+      !numbersCheckBox.checked &&
+      !lowerCaseCheckBox.checked &&
+      !upperCaseCheckBox.checked) 
+  {
+    message.innerHTML = "<p>Please Select A Character Type</p>";
+    return;
+  }
 
-//check box will tell what will be in there
-//var usedCharacterArrays = [upperCase, lowerCase, numbers, specialChars];
+  if (passwordLength.value < 8 ) {
+    message.innerHTML = "<p>Length must be between 8 and 128</p>";
+    return;
+  } else if (passwordLength.value > 128) {
+    message.innerHTML = "<p>Length must be between 8 and 128</p>";
+    return;
+  }
 
-// // this array will tell me what kind of character will be grabbed
-// var array = new Uint8Array(passwordLength);
-// var max = 256; // unsigned int range is 0 to 255 want 256 ::: 0 <= value < 1
-// window.crypto.getRandomValues(array); // gives me array of random numbers and changes array in place
+  if (specialCharsCheckBox.checked) {
+    charTypes.push(specialChars);
+  } 
+  if (numbersCheckBox.checked) {
+    charTypes.push(numbers);
+  } 
+  if (lowerCaseCheckBox.checked) {
+    charTypes.push(lowerCase);
+  } 
+  if (upperCaseCheckBox.checked) {
+    charTypes.push(upperCase);
+  } 
 
-// for (var i = 0; i < array.length; i++) {
-//   //get number between 0 and 3 (formula where max is exclusive)
-//   var chosenNumber = Math.floor((array[i] / max) * usedCharacterArrays.length);
-//   console.log(chosenNumber);
-// }
+  for (var i = 0; i < passwordLength.value; i++) {
+    /* have to choose what type of character will be in there
+       for all (passwordLength.value) characters
+    */
+    console.log(i);
+    // get integer between 0 (inclusive) and charTypes.length(exclusive) to get chartype
+    var index = Math.floor(Math.random() * charTypes.length) 
+
+    // then get random number for character list to get value and append to password array
+    password[i] = charTypes[index][Math.floor(Math.random() * charTypes[index].length)];
+    console.log(password[i]);
+    
+    // if first character or last character == " " then redo it.
+    if (password[0] === " " || password[passwordLength.value - 1] === " ") {
+      i = i - 1; 
+    }
+  }
+  
+  password = password.join("");
+  // join array together to make a string
+  passwordGenerator.innerText = password;
+
+} // end submit click callback
+
+
+
+
+
