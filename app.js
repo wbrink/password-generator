@@ -22,10 +22,10 @@ var upperCase = ["A", "B","C","D","E","F","G","H","I","J","K","L","M",
 
 generateButton.addEventListener("click", generatePassword); // event parameter is passed to the callback function
 
-var password = [];
+
 function generatePassword(e) {
   e.preventDefault(); // don't want the form to submit, want form data to stay the same after click
-  
+  var password = [];
   var charTypes = [];
 
   // if no character types are checked notify and return
@@ -80,6 +80,7 @@ function generatePassword(e) {
   password = password.join("");
   // join array together to make a string
   passwordGenerator.innerText = password;
+  console.log(password);
 
 } // end submit click callback
 

@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #dfe6e9;
+  /* background-color: #b2bec3; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container h1 {
+  text-align: center;
+  margin: 0px 20px 20px 20px;
+  font-size: 24px;
+}
+
+.container {
+  box-sizing: border-box;
+  /* want to fill whole container */
+  min-height: 80vh;
+  width: 100%;
+  padding: 20px;
+  margin: auto auto;
+  background-color: #e1e6ec;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #abb3bc, -5px -5px 10px #f3f6f9;
+}
+
+.container img {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+
+  /* neumorphism */
+  border-radius: 40px;
+  box-shadow: 5px 5px 10px #abb3bc, -5px -5px 10px #f3f6f9;
+}
+
+input[type="number"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* screen sizes <= 575 */
+@media (max-width: 575px) {
+  .container img {
+    width: 100px;
+  }
+}
+
+/* break points from bootstrap */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+    /* background: blue; */
+  }
+
+  .container img {
+    width: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    /* background: red; */
+  }
+
+  .container img {
+    width: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+    /* background: green; */
+  }
+
+  .container img {
+    width: 150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    /* background: brown; */
+  }
+
+  .container img {
+    width: 150px;
+    margin-bottom: 30px;
+  }
+}

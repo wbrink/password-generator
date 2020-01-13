@@ -9,43 +9,47 @@
     <title>Password Generator</title>
   </head>
   <body>
-    <h1>Password Generator</h1>
-
     <div class="container">
-      <h2>Generate a Password</h2>
+      <!-- <div class="image-container"> -->
+      <img src="lock.svg" alt="" />
+      <!-- </div> -->
+
+      <h1>Password Generator</h1>
 
       <form action="">
         <label for="length">Length (between 8 and 128 characters):</label>
         <input type="number" name="length" id="length" min="8" max="128" />
+
         <div>
           <label for="specialCharacters">Special Characters</label>
           <input type="checkbox" name="specialCharacters" id="specialCharacters" />
         </div>
+
         <div>
           <label for="specialCharacters">Numbers</label>
           <input type="checkbox" name="numbers" id="numbers" />
         </div>
+
         <div>
           <label for="specialCharacters">Lowercase Characters</label>
           <input type="checkbox" name="lowerCase" id="lowerCase" />
         </div>
+
         <div>
           <label for="specialCharacters">Uppercase Characters</label>
           <input type="checkbox" name="upperCase" id="upperCase" />
         </div>
+
         <input type="submit" value="Submit" id="submit" />
       </form>
-
 
       <div id="message">
         <p>Here is your password</p>
       </div>
 
-      <div id="password-generator">
-
-      </div>
-
-      <script src="app.js"></script>
+      <div id="password-generator"></div>
     </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
