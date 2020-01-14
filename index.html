@@ -10,37 +10,37 @@
   </head>
   <body>
     <div class="container">
-      <!-- <div class="image-container"> -->
       <img src="lock.svg" alt="" />
-      <!-- </div> -->
 
       <h1>Password Generator</h1>
 
       <form action="">
-        <label for="length">Length (between 8 and 128 characters):</label>
-        <input type="number" name="length" id="length" min="8" max="128" />
+        <div class="length-input">
+          <label for="length">Length:</label>
+          <input type="number" name="length" id="length" min="8" max="128" placeholder="Number between 8 and 128" />
+        </div>
 
-        <div>
+        <div class="checkbox-group">
+          <label for="lowerCase">Lowercase Characters</label>
+          <input type="checkbox" name="lowerCase" id="lowerCase" checked="true" />
+        </div>
+
+        <div class="checkbox-group">
+          <label for="upperCase">Uppercase Characters</label>
+          <input type="checkbox" name="upperCase" id="upperCase" />
+        </div>
+
+        <div class="checkbox-group">
           <label for="specialCharacters">Special Characters</label>
           <input type="checkbox" name="specialCharacters" id="specialCharacters" />
         </div>
 
-        <div>
-          <label for="specialCharacters">Numbers</label>
+        <div class="checkbox-group">
+          <label for="numbers">Numbers</label>
           <input type="checkbox" name="numbers" id="numbers" />
         </div>
 
-        <div>
-          <label for="specialCharacters">Lowercase Characters</label>
-          <input type="checkbox" name="lowerCase" id="lowerCase" />
-        </div>
-
-        <div>
-          <label for="specialCharacters">Uppercase Characters</label>
-          <input type="checkbox" name="upperCase" id="upperCase" />
-        </div>
-
-        <input type="submit" value="Submit" id="submit" />
+        <input type="submit" value="Generate Password" id="submit" />
       </form>
 
       <div id="message">

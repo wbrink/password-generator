@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+/* need to height so that the when flex needs to center
+   the container vertically it has a reference for how much space
+   to set the margin for. By default the height is only what space
+   the content takes up */
 html,
 body {
   height: 100%;
@@ -13,22 +17,23 @@ body {
   /* background-color: #b2bec3; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 
   font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
 }
 
 .container h1 {
   text-align: center;
   margin: 0px 20px 20px 20px;
-  font-size: 24px;
+  /* font-size: 1em; */
 }
 
 .container {
   box-sizing: border-box;
   /* want to fill whole container */
-  min-height: 80vh;
+  /* min-height: 80vh; */
   width: 100%;
   padding: 20px;
   margin: auto auto;
@@ -40,17 +45,57 @@ body {
 .container img {
   display: block;
   width: 100%;
-  margin: 20px auto;
+  margin: 0 auto 20px auto;
 
   /* neumorphism */
-  border-radius: 40px;
+  border-radius: 30px;
   box-shadow: 5px 5px 10px #abb3bc, -5px -5px 10px #f3f6f9;
 }
 
-input[type="number"] {
-  display: block;
-  width: 100%;
+form {
+  margin-bottom: 20px;
+}
+
+.length-input {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.length-input label {
+  flex-basis: 10%;
+}
+
+.length-input input[type="number"] {
+  flex-basis: 90%;
+  box-sizing: border-box;
+  padding-left: 3px;
+  /* flex-grow: 1; */
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.checkbox-group {
+  display: flex;
   margin-bottom: 10px;
+}
+
+.checkbox-group label {
+  flex-basis: 35%;
+}
+
+.checkbox-group input {
+  border: none;
+}
+
+/* submit button */
+input[type="submit"] {
+  padding: 5px;
+  width: 100%;
+  border: none;
+  background: lightskyblue;
+  border-radius: 10px;
 }
 
 /* screen sizes <= 575 */
@@ -60,7 +105,7 @@ input[type="number"] {
   }
 }
 
-/* break points from bootstrap */
+/* break points and container sizes from bootstrap */
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -79,14 +124,13 @@ input[type="number"] {
   }
 
   .container img {
-    width: 100px;
+    width: 125px;
   }
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .container {
     max-width: 960px;
-    /* background: green; */
   }
 
   .container img {
@@ -97,11 +141,10 @@ input[type="number"] {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-    /* background: brown; */
   }
 
   .container img {
     width: 150px;
     margin-bottom: 30px;
   }
-}
+} */
