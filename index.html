@@ -15,7 +15,7 @@
       <h1>Password Generator</h1>
 
       <form action="">
-        <div class="length-input">
+        <div class="length-group">
           <label for="length">Length:</label>
           <input type="number" name="length" id="length" min="8" max="128" placeholder="Number between 8 and 128" />
         </div>
@@ -47,8 +47,16 @@
         <p>Here is your password</p>
       </div>
 
-      <div id="password-generator"></div>
-    </div>
+      <div id="password-generator">
+        <textarea name="passwordTextArea" rows="5"></textarea>
+      </div>
+
+      <!-- copy button -->
+      <div class="copy-clear">
+        <button >Copy Password</button>
+        <button>Clear Password</button>
+      </div>
+      
 
     <script src="app.js"></script>
   </body>

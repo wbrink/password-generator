@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+/* responsive font sizing using rems*/
+html {
+  font-size: 16px;
+}
+
 /* need to height so that the when flex needs to center
    the container vertically it has a reference for how much space
    to set the margin for. By default the height is only what space
@@ -21,17 +26,28 @@ body {
   align-items: center; */
 
   font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
+  /* font-size: large; */
   color: #f1f2f6;
 
-  background: linear-gradient(to right, #2c3e50, #fd746c);
+  background: linear-gradient(to left, #283048, #859398);
 }
 
-.container h1 {
-  font-size: 24px;
+h1 {
   text-align: center;
-  margin: 0px 20px 20px 20px;
-  /* font-size: 1em; */
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  font-size: 1.2rem;
 }
 
 .container {
@@ -42,16 +58,20 @@ body {
   padding: 20px;
   margin: auto auto;
   /* background-color: #e1e6ec; */
-  border-radius: 20px;
-  /* box-shadow: 5px 5px 10px #abb3bc, -5px -5px 10px #f3f6f9; */
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #283048;
+  /* box-shadow: 5px 5px 10px #283048, -2px -2px 15px #859398; */
   background-color: rgba(22, 23, 22, 0.4);
   /* background-color: rgba(191, 191, 191, 0.1); */
+
+  display: flex;
+  flex-direction: column;
 }
 
 .container img {
   display: block;
-  width: 100%;
-  margin: 0 auto 10px auto;
+  width: 100px;
+  margin: 0 auto 0px auto;
 
   /* neumorphism */
   border-radius: 30px;
@@ -62,33 +82,36 @@ form {
   margin-bottom: 20px;
 }
 
-.length-input {
+.length-group {
   display: flex;
   margin-bottom: 20px;
   justify-content: center;
 }
 
-.length-input label {
+.length-group label {
   flex-basis: 10%;
+  align-self: center;
 }
 
-.length-input input[type="number"] {
+.length-group input[type="number"] {
+  color: #f1f2f6;
+  background-color: rgba(22, 23, 22, 0.4);
   flex-basis: 90%;
   box-sizing: border-box;
-  padding-left: 3px;
+  padding: 0.2rem;
   /* flex-grow: 1; */
-  margin-left: 5px;
+  margin-left: 2px;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .checkbox-group {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .checkbox-group label {
-  flex-basis: 35%;
+  flex-basis: 70%;
 }
 
 .checkbox-group input {
@@ -97,21 +120,72 @@ form {
 
 /* submit button */
 input[type="submit"] {
-  padding: 5px;
+  padding: 0.5rem;
   width: 100%;
   border: none;
-  background: rgba(173, 216, 230, 0.4);
-  border-radius: 10px;
+  color: #f1f2f6;
+  background-color: rgba(22, 23, 22, 0.4);
+  background-color: rgba(142, 68, 173, 0.4);
+  border-radius: 2px;
+}
+
+/* password area */
+#password-generator textarea {
+  width: 100%;
+  hyphens: none;
+  word-break: break-all;
+  margin-bottom: 10px;
+}
+
+/* copy and clear buttons div*/
+.copy-clear {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+button {
+  box-sizing: border-box;
+  border: none;
+  background-color: lightpink;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 0.7rem;
 }
 
 /* screen sizes <= 575 */
-@media (max-width: 575px) {
+@media (max-width: 449px) {
   .container img {
-    width: 100px;
+    width: 75px;
+    margin-bottom: 0px;
+  }
+
+  .container {
+    padding-top: 10px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+}
+
+/* screen sizes <= 575 */
+@media (min-width: 450px) {
+  .container img {
+    width: 75px;
+    margin-bottom: 0px;
+  }
+
+  .container {
+    padding-top: 10px;
+  }
+
+  html {
+    font-size: 14px;
   }
 
   .checkbox-group label {
-    flex-basis: 50%;
+    flex-basis: 40%;
   }
 }
 
@@ -125,36 +199,36 @@ input[type="submit"] {
   .container img {
     width: 100px;
   }
+
+  .checkbox-group label {
+    flex-basis: 40%;
+  }
 }
 
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 640px;
     /* background: red; */
   }
 
-  .container img {
-    width: 125px;
+  .checkbox-group label {
+    flex-basis: 35%;
   }
 }
 
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
+  html {
+    font-size: 18px;
+  }
   .container {
     max-width: 960px;
   }
 
   .container img {
-    width: 150px;
+    width: 125px;
+  }
+
+  .checkbox-group label {
+    flex-basis: 25%;
   }
 }
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-
-  .container img {
-    width: 150px;
-    margin-bottom: 30px;
-  }
-} */
