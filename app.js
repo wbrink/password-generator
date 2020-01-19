@@ -7,6 +7,8 @@ var upperCaseCheckBox = document.querySelector("#upperCase");
 var generateButton = document.querySelector("#submit"); // submit button
 var message = document.querySelector("#message"); // message area
 var passwordGenerator = document.querySelector("#password-generator");
+var copyButton = document.querySelector("#copy-button");
+var clearButton = document.querySelector("#clear-button");
 
 
 // character arrays to choose from
@@ -26,6 +28,8 @@ generateButton.addEventListener("click", generatePassword); // event parameter i
 
 function generatePassword(e) {
   e.preventDefault(); // don't want the form to submit, want form data to stay the same after click
+
+  message.firstElementChild.textContent = "";
   var password = [];
   var charTypes = [];
 
@@ -82,6 +86,19 @@ function generatePassword(e) {
   
 } // end submit click callback
 
+// copy button click event
+copyButton.addEventListener("click", () => {
+  var password = passwordGenerator.firstElementChild;
+  
+  password.select(); // execCommand only works for something that is selected
+  document.execCommand("copy") // password is copied to clipboard
+  message.firstElementChild.textContent = "Password Copied to Clipboard";
+});
+
+// clear button click event
+clearButton.addEventListener("click", () => {
+  passwordGenerator.firstElementChild.value = "";
+})
 
 
 
