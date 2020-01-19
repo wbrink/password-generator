@@ -90,6 +90,12 @@ function generatePassword(e) {
 copyButton.addEventListener("click", () => {
   var password = passwordGenerator.firstElementChild;
   
+  // if password field is empty then then there is nothing to select and copy from
+  if (password.value == "") {
+    message.firstElementChild.textContent = "Please Fill Out Form";
+    return;
+  }
+
   password.select(); // execCommand only works for something that is selected
   document.execCommand("copy") // password is copied to clipboard
   message.firstElementChild.textContent = "Password Copied to Clipboard";
@@ -98,6 +104,7 @@ copyButton.addEventListener("click", () => {
 // clear button click event
 clearButton.addEventListener("click", () => {
   passwordGenerator.firstElementChild.value = "";
+  message.firstElementChild.textContent = "";
 })
 
 
